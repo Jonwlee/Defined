@@ -1,0 +1,36 @@
+body {
+  min-height: 2000px;
+}
+
+.navbar-static-top {
+  margin-bottom: 3px;
+  background-color: #e15248;
+    }
+
+.btn-default {
+
+margin-top: 5px; 
+}
+
+.navbar-default h2.navbar-brand{
+	font-size: 72px;
+	color: #FFFFFF;
+}
+nav#cbp-spmenu-s2.cbp-spmenu.cbp-spmenu-vertical.cbp-spmenu-right.cbp-spmenu-open{
+color: #5BC03B 
+}
+
+.cbp-spmenu h3{
+color:#FFFFFF; 
+}
+
+.cbp-spmenu-vertical a{
+	/*border-bottom: 1px solid #258ecd; */
+	border-bottom: 1px solid #258ecd;
+padding: 1em;
+}
+
+.cbp-spmenu a{
+	color:#FFFFFF; 
+
+}
