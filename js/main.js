@@ -46,17 +46,16 @@ function loadXMLDoc(url) {
 
 
 function state_Change() {
-    if (xmlhttp.readyState == 4) { // 4 = "loaded"
-        if (xmlhttp.status == 200) { // 200 = OK
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) { // 200 = OK
             //xmlhttp.data and shtuff
             // ...our code here...
            
-            var definition = xmlhttp.getElementsByTagName("plaintext")[0];
+            var definition = xmlhttp.responseXML.documentElement.getElementsByTagName("plaintext")[1]; //[0]
             document.getElementById('output').value = definition
-
-
+         
         }
-    } else {
+    
+    else {
         alert("Problem retrieving data");
     }
 }
@@ -79,7 +78,7 @@ function textToArray() {
 
 
     for (i = 0; input = stringArray[i]; i++) {
-        url = "http://api.wolframalpha.com/v2/query?appid=J683VL-3XY28ALK48&input=define%20" + input + "&format=plaintext";
+        url = "http://crossorigin.me/http://api.wolframalpha.com/v2/query?appid=J683VL-3XY28ALK48&input=define%20" + input + "&format=plaintext";
 
 
 
