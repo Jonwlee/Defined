@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', //this is one big parameter
     function handlers() {
-        document.getElementById('defined').addEventListener('click', textToArray);
+        document.getElementById('defined').addEventListener('click', textToArray); //event handlers
 
     });
+//--------menu js
 var definition;
 
 var
@@ -27,31 +28,12 @@ function disableOther(button) {
     }
 
 }
-
-
-
-function loadXMLDoc(url) {
-
-    xmlhttp = null;
-    if (window.XMLHttpRequest) {
-        xmlhttp = new XMLHttpRequest();
-    }
-    if (xmlhttp != null) {
-        xmlhttp.onreadystatechange = state_Change;
-        xmlhttp.open("GET", url, true);
-        xmlhttp.send(null);
-    }
-}
-
-
-
-
+//---end of menu js
 
 
 function textToArray() {
     var input;
     var url;
-    var xmlhttp; //globals, needed for xml
     var stringArray = [];
     var vocabList = document.getElementById('input').value
     var stringArray = document.getElementById('input').value.split("\n");
@@ -62,34 +44,21 @@ function textToArray() {
         alert("Nothing to be Defined");
     }
 
-
-
     for (i = 0; input = stringArray[i]; i++) {
         url = "http://crossorigin.me/http://api.wolframalpha.com/v2/query?appid=J683VL-3XY28ALK48&input=define%20" + input + "&format=plaintext&podtitle=Result";
 
+        var xmlDoc = loadXMLDoc(url);
+        x = xmlDoc.getElementsByTagName("plaintext");
 
-
-        loadXMLDoc(url);
-
+        x = document.getElementById('output').value;
 
     }
 }
 
-function state_Change() {
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) { // 200 = OK
-            //xmlhttp.data and shtuff
-            // ...our code here...
-           
-            // var definition = xmlhttp.responseXML.documentElement.getElementsByTagName("pod")[0].childNodes[0]; //[0]
-           var definition = xmlhttp.responseXML.documentElement.getElementsByTagName("pod").textContent;
-            
-          //pls help here 
-           
-           definition = document.getElementById('output').value; 
-         
-        }
-    
-    else {
-        alert("Problem retrieving data");
-    }
+function loadXMLDoc(url) {
+    var xmlhttp;
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", url, false);
+    xmlhttp.send();
+    return xmlhttp.responseXML;
 }
