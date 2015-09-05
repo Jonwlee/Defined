@@ -47,18 +47,28 @@ function textToArray() {
     for (i = 0; input = stringArray[i]; i++) {
         url = "http://crossorigin.me/http://api.wolframalpha.com/v2/query?appid=J683VL-3XY28ALK48&input=define%20" + input + "&format=plaintext&podtitle=Result";
 
-        var xmlDoc = loadXMLDoc(url);
-        x = xmlDoc.getElementsByTagName("plaintext");
+        loadXMLDoc(url, function() {
+            xmlDoc = this.responseXML;
+           var result = $(xmlDoc).find("plaintext").text();
+        document.getElementById('output').value = result;    
+        });
 
-        x = document.getElementById('output').value;
+
+        
 
     }
 }
 
-function loadXMLDoc(url) {
+function loadXMLDoc(url,callback) {
     var xmlhttp;
     xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", url, false);
+    xmlhttp.open("GET", url, true);
     xmlhttp.send();
+    xmlhttp.onload=callback;
     return xmlhttp.responseXML;
 }
+
+
+
+
+
