@@ -50,7 +50,11 @@ function textToArray() {
         loadXMLDoc(url, function() {
             xmlDoc = this.responseXML;
            var result = $(xmlDoc).find("plaintext").text();
-        document.getElementById('output').value = result;    
+
+
+       document.getElementById('output').value = document.getElementById('output').value + "\n" + result;  
+
+
         });
 
 
