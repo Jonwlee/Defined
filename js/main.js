@@ -66,7 +66,7 @@ function textToArray() {
 function loadXMLDoc(url,callback) {
     var xmlhttp;
     xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", "https://login.live.com/oauth20_authorize.srf?client_id={000000004C170226} &scope={mshealth.login}&response_type=code&redirect_uri={https://login.live.com/oauth20_desktop.srf}", true);
+    xmlhttp.open("GET", url, true);
     xmlhttp.send();
     xmlhttp.onload=callback;
     return xmlhttp.responseXML;
